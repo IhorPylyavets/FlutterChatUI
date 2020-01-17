@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui_starter/models/message_model.dart';
+import 'package:flutter_chat_ui_starter/screens/chat_screen.dart';
 
 class ResentChats extends StatelessWidget {
 
@@ -24,7 +25,12 @@ class ResentChats extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 final Message message = chats[index];
                 return GestureDetector(
-                  onTap: () => print('Clicked chat: ${message.text}'),
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => ChatScreen(user: message.sender)
+                      )
+                  ),
                   child: Container(
                     margin: EdgeInsets.only(top: 5.0, right: 20.0, bottom: 5.0),
                     padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),

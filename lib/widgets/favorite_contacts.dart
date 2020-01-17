@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui_starter/models/message_model.dart';
 import 'package:flutter_chat_ui_starter/models/user_model.dart';
+import 'package:flutter_chat_ui_starter/screens/chat_screen.dart';
 
 class FavoriteContacts extends StatelessWidget {
   @override
@@ -42,7 +43,12 @@ class FavoriteContacts extends StatelessWidget {
                   return Padding(
                     padding: EdgeInsets.all(10.0),
                     child: GestureDetector(
-                      onTap: () => print('Clicked user: ${user.name}'),
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => ChatScreen(user: user)
+                          )
+                      ),
                       child: Column(
                         children: <Widget>[
                           CircleAvatar(
